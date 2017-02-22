@@ -30,7 +30,9 @@ $.fn.stick_in_parent = (opts={}) ->
 
   # we need this because jquery's version (along with css()) rounds everything
   outer_width = (el) ->
-    if window.getComputedStyle
+    if el[0].getBoundingClientRect().width 
+      el[0].getBoundingClientRect().width
+    else if window.getComputedStyle
       _el = el[0]
       computed = window.getComputedStyle el[0]
 
@@ -40,7 +42,7 @@ $.fn.stick_in_parent = (opts={}) ->
         w += parseFloat(computed.getPropertyValue("border-left-width")) + parseFloat(computed.getPropertyValue("border-right-width")) + parseFloat(computed.getPropertyValue("padding-left")) + parseFloat(computed.getPropertyValue("padding-right"))
       w
     else
-      if elm[0].getBoundingClientRect().width then elm[0].getBoundingClientRect().width else el.outerWidth true
+      el.outerWidth true
 
   for elm in @
     ((elm, padding_bottom, parent_top, parent_height, top, height, el_float, detached) ->
