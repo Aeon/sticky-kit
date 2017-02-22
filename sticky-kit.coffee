@@ -40,7 +40,7 @@ $.fn.stick_in_parent = (opts={}) ->
         w += parseFloat(computed.getPropertyValue("border-left-width")) + parseFloat(computed.getPropertyValue("border-right-width")) + parseFloat(computed.getPropertyValue("padding-left")) + parseFloat(computed.getPropertyValue("padding-right"))
       w
     else
-      el.outerWidth true
+      if elm[0].getBoundingClientRect().width then elm[0].getBoundingClientRect().width else el.outerWidth true
 
   for elm in @
     ((elm, padding_bottom, parent_top, parent_height, top, height, el_float, detached) ->
@@ -190,7 +190,7 @@ $.fn.stick_in_parent = (opts={}) ->
             }
 
             css.width = if elm.css("box-sizing") == "border-box"
-              elm.outerWidth() + "px"
+              if elm[0].getBoundingClientRect().width then elm[0].getBoundingClientRect().width + "px" else elm.outerWidth() + "px"
             else
               elm.width() + "px"
 
