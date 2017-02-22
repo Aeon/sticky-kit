@@ -1,5 +1,5 @@
 ###*
-@license Sticky-kit v1.1.4 | MIT | Leaf Corcoran 2015 | http://leafo.net
+@license Sticky-kit v1.1.6 | MIT | Leaf Corcoran 2015 | http://leafo.net
 ###
 
 $ = window.jQuery
